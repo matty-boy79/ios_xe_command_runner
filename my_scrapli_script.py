@@ -1,16 +1,9 @@
 from scrapli.driver.core import IOSXEDriver
+import variables
 
-my_device = {
-    "host": "ios-xe-mgmt.cisco.com",
-    "auth_username": "developer",
-    "auth_password": "C1sco12345",
-    "port": 8181,
-    "auth_strict_key": False,
-}
-
-conn = IOSXEDriver(**my_device)
+conn = IOSXEDriver(**variables.my_device)
 conn.open()
-response = conn.send_command("show ip int b")
+response = conn.send_command('show ip int brief | inc Vlan')
 print(response.result)
 
 #response = conn.send_configs(['interface loop5678', 'desc Matt Test', 'ip add 5.6.7.8 255.255.255.0'])
