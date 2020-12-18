@@ -1,5 +1,6 @@
 variables.py
 device_list.txt
+commands.txt
 output.txt
 
 __pycache__/
