@@ -6,4 +6,5 @@
 6. Execute the script: python3 command_runner.py
 
 https://github.com/carlmontanari/scrapli
+
 https://blogs.cisco.com/developer/power-of-python-community
