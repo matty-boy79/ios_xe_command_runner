@@ -14,7 +14,7 @@ now = datetime.now()
 strnow = now.strftime("%d/%m/%Y %H:%M:%S")
 
 # Craft the data to write to the output file
-data = "\n" + "=" * 85 + "\n" + strnow
+data = "\n" + strnow + "\n"
 
 # Write the current date & time to the top of the output file
 with open(OUTFILE, "w") as outfile:
@@ -62,13 +62,11 @@ for ip_addr in devices:
     response = conn.send_commands(commands)
     hostname = response.data[0].result
 
-    data = "\n" + "=" * 85 + "\n" + "-" * 75 + "\n" + hostname + ", Mngt IP: " + ip_addr + "\n" + "-" * 75 + "\n"
+    data = "\n" + "=" * 85 + "\n" + hostname + ", Mngt IP: " + ip_addr + "\n" + "=" * 85 + "\n"
 
     for command in response.data:
         if "hostname" not in command.result:
             data = data + command.result + "\n"
-
-    data = data + "=" * 85 + "\n\n"
 
     with open(OUTFILE, "a") as outfile:
         outfile.write(data)
