@@ -41,7 +41,7 @@ with open(COMMANDS, "r") as cmds_file:
         commands.append(line.strip())
 
 # Insert the command "show run | inc hostname" at the beginning of the list of commands
-commands.insert(0, 'show run | inc "AP Name"')
+commands.insert(0, 'show run | inc hostname')
 
 # Create a counter to display progress to user
 counter = 1
@@ -65,7 +65,7 @@ for ip_addr in devices:
     data = "\n" + "=" * 85 + "\n" + "-" * 75 + "\n" + hostname + ", Mngt IP: " + ip_addr + "\n" + "-" * 75 + "\n"
 
     for command in response.data:
-        if "AP Name" not in command.result:
+        if "hostname" not in command.result:
             data = data + command.result + "\n"
 
     data = data + "=" * 85 + "\n\n"
