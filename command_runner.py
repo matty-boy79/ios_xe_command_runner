@@ -13,9 +13,12 @@ OUTFILE = variables.OUTPUT_FILE
 now = datetime.now()
 strnow = now.strftime("%d/%m/%Y %H:%M:%S")
 
+# Craft the data to write to the output file
+data = "\n" + "=" * 85 + "\n" + strnow
+
 # Write the current date & time to the top of the output file
 with open(OUTFILE, "w") as outfile:
-    outfile.write(strnow)
+    outfile.write(data)
 
 # Create an empty list to store all the devices
 devices = []
@@ -64,6 +67,8 @@ for ip_addr in devices:
     for command in response.data:
         if "AP Name" not in command.result:
             data = data + command.result + "\n"
+
+    data = data + "=" * 85 + "\n\n"
 
     with open(OUTFILE, "a") as outfile:
         outfile.write(data)
