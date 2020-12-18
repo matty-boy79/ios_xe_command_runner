@@ -1,3 +1,0 @@
-show controllers dot11Radio 0 | inc UP
-show controllers dot11Radio 1 | inc UP
-show controllers dot11Radio 2 | inc UP
