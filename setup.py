@@ -14,4 +14,4 @@ print("device_list.txt ...Created")
 with open("device_list.txt", "w") as device_file:
 	device_file.write('1.1.1.1\n2.2.2.2\n3.3.3.3')
 
-print("\nPlease create a Python Virtual Environment and run command:\n\n   pip install -r requirements.txt\n")
+print("\nPlease create a Python Virtual Environment and install the required libraries:\n\n   - python3 -m venv .\n   - pip install -r requirements.txt")
