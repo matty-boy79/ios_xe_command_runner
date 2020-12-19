@@ -4,7 +4,7 @@ print("=====================================")
 
 print("\nvariables.txt .....Created")
 with open("variables.py", "w") as vars_file:
-	vars_file.write('USERNAME = "<ENTER_USERNAME_HERE>"\nPASSWORD = "<ENTER_PASSWORD_HERE"\nDEVICE_LIST = "device_list.txt"\nCOMMANDS = "commands.txt"\nOUTPUT_FILE = "output.txt"')
+	vars_file.write('USERNAME = "<ENTER_USERNAME_HERE>"\nPASSWORD = "<ENTER_PASSWORD_HERE>"\nDEVICE_LIST = "device_list.txt"\nCOMMANDS = "commands.txt"\nOUTPUT_FILE = "output.txt"')
 
 print("commands.txt ......Created")
 with open("commands.txt", "w") as cmds_file:
