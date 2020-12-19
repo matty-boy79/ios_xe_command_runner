@@ -57,21 +57,31 @@ for ip_addr in devices:
         "transport": "paramiko"
     }
 
+    # Create and open the connection object, send the list of commands and store the responses
     conn = IOSXEDriver(**my_device)
     conn.open()
     response = conn.send_commands(commands)
+    
+    # Extract the result of the first command - this should be the hostname
     hostname = response.data[0].result
 
+    # Create a variable to store the heading (hostname & IP) formatted nicely
     data = "\n" + "=" * 85 + "\n" + hostname + ", Mngt IP: " + ip_addr + "\n" + "=" * 85 + "\n"
 
+    # For each command loaded from commands.txt, loop through each command and add the command output to the data variable
     for command in response.data:
+        # We don't want to do this for if the output contains 'hostname'
         if "hostname" not in command.result:
+            # Append the command result
             data = data + command.result + "\n"
 
+    # Open the output file and write the data for this device before looping around for the next device
     with open(OUTFILE, "a") as outfile:
         outfile.write(data)
         
+    # Print progress to stdout
     print(f"{counter} of {device_count} done.")
     counter += 1
 
-print(f"Check output in file: {OUTFILE}")
+# Print the completion message
+print(f"All done. Yay. Check file: {OUTFILE}")
